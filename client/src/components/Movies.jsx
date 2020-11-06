@@ -5,6 +5,9 @@ class Movies extends React.Component {
   constructor(props) {
     super(props)
   }
+
+
+
   // Make an onClick for each list item. If the movies shown is the search results,
   // onClick add it to the database (do it in the main app, and pass down the function)
 
@@ -16,7 +19,7 @@ class Movies extends React.Component {
     return (
       <ul className="movies">
     {this.props.movies.map((movie) => (
-      <li className="movie_item">
+      <li onClick={} className="movie_item">
         <img src={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`} />
         <div className="movie_description">
           <h2>{movie.overview}</h2>
@@ -27,7 +30,7 @@ class Movies extends React.Component {
             </div>
             <div className="movie_rating">
               <span className="title">{movie.title}</span>
-              <span>{movie.popularity}</span>
+              <span>{movie.vote_average}</span>
             </div>
           </section>
         </div>

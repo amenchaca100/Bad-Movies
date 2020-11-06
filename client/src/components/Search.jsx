@@ -5,9 +5,11 @@ class Search extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      genres: []
+      genres: [],
+      genre: null
     };
     this.getGenres = this.getGenres.bind(this);
+    this.filterGenre = this.filterGenre.bind(this);
   }
 
   componentDidMount() {
@@ -21,6 +23,12 @@ class Search extends React.Component {
      console.log(err));
  }
 
+filterGenre(e) {
+  this.setState({genre: e.target.value})
+  return this.props.handleGenre(this.state.genre)
+  }
+
+
 
 
 
@@ -32,9 +40,9 @@ class Search extends React.Component {
         <br/><br/>
 
 
-        <select>
+        <select onChange={this.filterGenre}>
         { this.state.genres.map((genre) => (
-          <option value={genre.id}>{genre.name}</option>
+          <option  value={genre.id}>{genre.name}</option>
         ))}
         </select>
         <br/><br/>

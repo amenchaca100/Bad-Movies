@@ -18,7 +18,9 @@ app.use(express.static(__dirname + "/../client/dist"));
 
 
 
-app.get("/genres", movieController.getGenres)
+app.get("/genres", movieController.getGenres);
+
+app.post("/genres", movieController.filterGenres);
 
 app.get("/search", movieController.getSearch);
 
