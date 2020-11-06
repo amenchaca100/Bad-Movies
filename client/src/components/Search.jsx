@@ -16,8 +16,7 @@ class Search extends React.Component {
 
   getGenres() {
     return axios.get('/genres').then((allGenres) => {
-      console.log(allGenres)
-      this.setState({genres: allGenres})
+      this.setState({genres: allGenres.data.genres})
     }).catch((err) =>
      console.log(err));
  }
@@ -26,6 +25,7 @@ class Search extends React.Component {
 
 
   render() {
+
     return (
       <div className="search">
         <button onClick={() => {this.props.swapFavorites()}}>{this.props.showFaves ? "Show Results" : "Show Favorites"}</button>

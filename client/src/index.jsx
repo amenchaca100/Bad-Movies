@@ -8,8 +8,8 @@ class App extends React.Component {
   constructor(props) {
   	super(props)
   	this.state = {
-      movies: [{deway: "movies"}],
-      favorites: [{deway: "favorites"}],
+      movies: [],
+      favorites: [],
       showFaves: false,
     };
     this.getMovies = this.getMovies.bind(this);
@@ -24,8 +24,8 @@ class App extends React.Component {
   }
 
   getMovies() {
-    axios.get('/search').then(function(response) {
-      this.setState({movies: response.data});
+    return axios.get('/search').then((res) => {
+      this.setState({movies: res.data.results});
     }).catch(function(err) {
       console.log(err)
     })
@@ -55,7 +55,6 @@ class App extends React.Component {
           <Search
           swapFavorites={this.swapFavorites} showFaves={this.state.showFaves}/>
           <Movies
-           getMovies={this.getMovies}
           movies={this.state.showFaves ? this.state.favorites : this.state.movies} showFaves={this.state.showFaves}/>
         </div>
       </div>

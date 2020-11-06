@@ -6,8 +6,9 @@ const axios = require('axios');
 module.exports = {
 
   getSearch: (req, res) => {
-    return axios.get(searchURL).then(function(data) {
-      res.send(data);
+    console.log('running getSearch')
+    return axios.get(searchURL).then(function(response) {
+      res.status(200).send(response.data);
     }).catch(function(err) {
       console.log('failed to search for movies')
     });
@@ -17,7 +18,6 @@ module.exports = {
   getGenres: (req, res) => {
     console.log('running getGenres');
     return axios.get(genreURL).then(function(response) {
-      console.log(response.data)
     res.status(200).send(response.data);
     }).catch(function(err) {
       console.log('failed to get movie genres')
